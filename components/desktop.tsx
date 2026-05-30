@@ -710,39 +710,23 @@ type ProjectsWindowProps = {
 function ProjectsWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMouseDown }: ProjectsWindowProps) {
   const projects = [
     {
-      name: "GrubFinder",
-      stack: "JavaScript, Node.js, REST APIs, Gemini API",
-      repo: "https://github.com/andrewdang06/grubfinder.git",
-      bullets: [
-        "Built a full-stack food discovery platform that delivers location-aware restaurant recommendations through Gemini-powered query understanding and ranking.",
-        "Implemented backend filtering and scoring across 100+ restaurant attributes to return high-rated, criteria-matched results with faster and more relevant search outcomes.",
-      ],
-    },
-    {
-      name: "Git Automation Tool",
-      stack: "TypeScript, Electron, Node.js, GitHub API, Gemini API",
+      name: "EleSynth",
+      stack: "Claude, Codex, Next.js, FastAPI, SciPy, Librosa, Gemini API",
       repo: "",
+      image: "/project-elesynth.png",
       bullets: [
-        "Built an end-to-end repository onboarding workflow that validates GitHub URLs, clones repos, detects setup strategy (npm/yarn/pnpm/pip/poetry), runs install commands, and streams live logs in-app.",
-        "Integrated GitHub metadata and Gemini-generated summaries/troubleshooting to produce actionable first-run guidance, reducing manual onboarding friction for unfamiliar codebases.",
+        "Built a full-stack bioacoustics workbench to isolate elephant vocalizations from noisy field recordings using STFT and harmonic-percussive separation.",
+        "Designed a FastAPI backend with DSP pipelines (NumPy, SciPy, Librosa) to process WAV inputs into cleaned audio, spectrogram visualizations, and structured metadata outputs.",
       ],
     },
     {
-      name: "Klip",
-      stack: "C++",
-      repo: "https://github.com/andrewdang06/klip.git",
+      name: "Network Optimization Agent",
+      stack: "Batch, PowerShell, WMI, iPerf, Test Agents, Codex",
+      repo: "",
+      image: "/project-network-optimization-agent.png",
       bullets: [
-        "Designed a ring-buffer-based capture pipeline with deferred encoding to minimize redundant frame processing, reducing CPU/RAM/GPU overhead and improving performance on low-end systems.",
-        "Engineered a zero-copy frame buffering architecture with selective encoding and parallel processing, achieving sub-50ms clip retrieval latency with near-zero impact on gameplay performance.",
-      ],
-    },
-    {
-      name: "Exploit Incorporated",
-      stack: "TypeScript, React, Figma",
-      repo: "https://github.com/andrewdang06/exploitcorp.git",
-      bullets: [
-        "Engineered scalable gameplay systems, including progression mechanics and income algorithms, to support dynamic loops and long-term player retention.",
-        "Developed responsive React UI components from Figma specifications to improve usability, visual consistency, and cross-device experience.",
+        "Developed an automated diagnostic agent using Batch and PowerShell to scan local environments and safely evaluate optimization settings for latency reduction.",
+        "Engineered network test agents using WMI and iPerf to continuously monitor packet flow, validate configuration improvements, and support reliable real-time data transmission.",
       ],
     },
   ];
@@ -791,33 +775,46 @@ function ProjectsWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleM
       </div>
 
       <div className="relative z-[1] h-[calc(100%-34px)] overflow-auto bg-[linear-gradient(132deg,rgba(30,35,50,0.5)_0%,rgba(20,24,35,0.3)_100%)] p-[28px]">
-        <div className="mx-auto max-w-[920px] space-y-[14px]">
+        <div className="mx-auto grid max-w-[980px] gap-[18px]">
           {projects.map((project) => (
             <section
               key={project.name}
-              className="rounded-[10px] border border-[rgba(164,201,255,0.22)] bg-[rgba(11,17,30,0.42)] p-[16px]"
+              className="overflow-hidden rounded-[10px] border border-[rgba(164,201,255,0.22)] bg-[rgba(11,17,30,0.52)] shadow-[0_18px_40px_rgba(0,0,0,0.24)]"
             >
-              <div className="flex flex-wrap items-center justify-between gap-[10px]">
-                <h3 className="text-[18px] text-[#e8edf5]">{project.name}</h3>
-                {project.repo ? (
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="border border-[#5aa7dc] px-[10px] py-[5px] text-[11px] uppercase tracking-[0.7px] text-[#9fd9ff] hover:bg-[rgba(90,167,220,0.16)]"
-                  >
-                    View Repo
-                  </a>
-                ) : null}
+              <div className="grid min-h-[250px] grid-cols-[390px_1fr]">
+                <div className="relative border-r border-[rgba(164,201,255,0.16)] bg-[#0b111d]">
+                  <img
+                    alt={`${project.name} project preview`}
+                    className="h-full w-full object-cover"
+                    src={project.image}
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,14,0)_45%,rgba(5,8,14,0.42)_100%)]" />
+                </div>
+
+                <div className="p-[18px]">
+                  <div className="flex flex-wrap items-center justify-between gap-[10px]">
+                    <h3 className="text-[20px] text-[#e8edf5]">{project.name}</h3>
+                    {project.repo ? (
+                      <a
+                        href={project.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="border border-[#5aa7dc] px-[10px] py-[5px] text-[11px] uppercase tracking-[0.7px] text-[#9fd9ff] hover:bg-[rgba(90,167,220,0.16)]"
+                      >
+                        View Repo
+                      </a>
+                    ) : null}
+                  </div>
+
+                  <p className="pt-[8px] text-[12px] uppercase tracking-[1px] text-[#9fc7e8]">{project.stack}</p>
+
+                  <ul className="list-disc space-y-[8px] pl-[18px] pt-[14px] text-[13px] leading-[1.58] text-[rgba(192,199,212,0.92)]">
+                    {project.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-
-              <p className="pt-[6px] text-[12px] uppercase tracking-[1px] text-[#9fc7e8]">{project.stack}</p>
-
-              <ul className="list-disc space-y-[6px] pl-[18px] pt-[10px] text-[13px] leading-[1.55] text-[rgba(192,199,212,0.92)]">
-                {project.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
             </section>
           ))}
         </div>
@@ -1090,30 +1087,33 @@ function PortfolioWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitle
               Andrew Dang
             </h1>
             <p className="max-w-[700px] pt-[22px] text-[22px] font-thin text-[#c0c7d4] leading-[1.45]">
-              I focus on building full-stack applications that apply to my real world issues. I enjoy experimenting and leveraging every tool I can to maximize my creativity. I aim to turn my ideas into reality.
+              Computer Science student, founder, and software engineer building practical tools across systems optimization, data pipelines, and AI-assisted full-stack applications.
             </p>
             <p className="max-w-[700px] pt-[14px] text-[17px] font-thin text-[rgba(192,199,212,0.86)] leading-[1.55]">
-              Outside of development, I enjoy activities like the gym, basketball, and esports. My goals for the future is the opportunity to travel all across the world with my friends.
+              My recent work spans bioacoustics signal processing, network diagnostics, real-time sports data engineering, and low-end PC optimization. I like turning messy technical problems into clean, usable systems.
             </p>
 
             <div className="max-w-[760px] pt-[34px]">
               <div className="flex flex-wrap gap-[8px]">
-                <ColorTag bg="#f07b33" text="Swift" />
                 <ColorTag bg="#146eb4" text="Python" />
+                <ColorTag bg="#3f6d96" text="C++/C" />
+                <ColorTag bg="#3178c6" text="TypeScript" />
                 <ColorTag bg="#d1a618" text="JavaScript" textColor="#1f1600" />
                 <ColorTag bg="#8b8b8b" text="SQL" />
+                <ColorTag bg="#557c9b" text="Batch" />
                 <ColorTag bg="#d76448" text="Git" />
-                <ColorTag bg="#9ea113" text="HTML/CSS" textColor="#161800" />
-                <ColorTag bg="#4c89c3" text="SwiftUI" />
-                <ColorTag bg="#1278c8" text="React Native" />
-                <ColorTag bg="#69a97f" text="VueJS" />
-                <ColorTag bg="#3f6d96" text="Flask" />
-                <ColorTag bg="#2f8a43" text="MongoDB" />
-                <ColorTag bg="#4f8db7" text="SQLite" />
-                <ColorTag bg="#7350d0" text="Figma" />
-                <ColorTag bg="#2f8f5a" text="Gym" />
-                <ColorTag bg="#3f79c4" text="Basketball" />
-                <ColorTag bg="#6d53c7" text="Gaming" />
+                <ColorTag bg="#1278c8" text="React" />
+                <ColorTag bg="#1f7a53" text="Next.js" />
+                <ColorTag bg="#3f6d96" text="FastAPI" />
+                <ColorTag bg="#2f8a43" text="Node.js" />
+                <ColorTag bg="#5f4fb5" text="Electron" />
+                <ColorTag bg="#4f8db7" text="FFmpeg" />
+                <ColorTag bg="#7350d0" text="OpenCV" />
+                <ColorTag bg="#2f8f5a" text="Pandas" />
+                <ColorTag bg="#3f79c4" text="NumPy" />
+                <ColorTag bg="#6d53c7" text="SciPy" />
+                <ColorTag bg="#a453c7" text="Librosa" />
+                <ColorTag bg="#47658f" text="Linux" />
               </div>
             </div>
           </div>
@@ -1185,6 +1185,14 @@ function ResumeWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMou
             <p className="pt-[6px] text-[14px] font-thin text-[rgba(192,199,212,0.8)]">
               (682) 300-1386 | andrewdangbusiness@gmail.com | github.com/andrewdang06 | portfolio-psi-ten-qk0ppj3f0c.vercel.app
             </p>
+            <a
+              href="/andrew-dang-resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-[14px] inline-flex border border-[#5aa7dc] px-[10px] py-[5px] text-[11px] uppercase tracking-[0.7px] text-[#9fd9ff] hover:bg-[rgba(90,167,220,0.16)]"
+            >
+              Open PDF
+            </a>
 
             <div className="mt-[24px] space-y-[22px] text-[14px] font-thin leading-[1.65]">
               <section>
@@ -1193,11 +1201,10 @@ function ResumeWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMou
                   University of Texas at Arlington - Arlington, TX
                 </p>
                 <p>
-                  B.S. in Computer Science, Minor in Business (Expected Fall 2028)
+                  B.S. in Computer Science, Minor in Business (Expected May 2028)
                 </p>
                 <ul className="list-disc space-y-[4px] pl-[18px] pt-[6px] text-[rgba(192,199,212,0.92)]">
-                  <li>GPA: 3.75/4.0</li>
-                  <li>Honors: Freshman Distinction, Dean&apos;s List, Maverick Academic Scholarship</li>
+                  <li>GPA: 3.84/4.0</li>
                 </ul>
               </section>
 
@@ -1205,31 +1212,46 @@ function ResumeWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMou
                 <h3 className="text-[12px] uppercase tracking-[1.2px] text-[#a4c9ff]">Experience</h3>
 
                 <div className="pt-[6px]">
-                  <p className="text-[#e5e2e1]">Premier Soccer Services - Katy, TX</p>
+                  <p className="text-[#e5e2e1]">Peak Systems - Fort Worth, TX</p>
                   <p className="text-[rgba(192,199,212,0.76)]">
-                    Data Science Intern | Aug. 2025 - Present
+                    Founder &amp; Software Engineer | May 2025 - Present
                   </p>
                   <ul className="list-disc space-y-[4px] pl-[18px] pt-[4px] text-[rgba(192,199,212,0.92)]">
                     <li>
-                      Analyzed performance and attendance data for 600+ athletes using Python (Pandas, NumPy), identifying trends that improved training plan personalization by 30% and increased session attendance by 25%.
+                      Founded and bootstrapped a system optimization startup, building an organic distribution channel via Discord that scaled to over 800 community members.
                     </li>
                     <li>
-                      Automated data cleaning and reporting pipelines, reducing manual processing effort by 70% and accelerating report delivery for coaching staff.
+                      Engineered core system tuning workflows primarily using Batch scripting, integrated with custom user authentication for secure account management and service delivery.
                     </li>
                   </ul>
                 </div>
 
                 <div className="pt-[10px]">
-                  <p className="text-[#e5e2e1]">Tomorrow&apos;s Leaders Today - Fort Worth, TX</p>
+                  <p className="text-[#e5e2e1]">Premier Soccer Services - Katy, TX</p>
                   <p className="text-[rgba(192,199,212,0.76)]">
-                    Data Analytics Intern | May 2025 - Aug. 2025
+                    Data Analyst Intern | May 2025 - Present
                   </p>
                   <ul className="list-disc space-y-[4px] pl-[18px] pt-[4px] text-[rgba(192,199,212,0.92)]">
                     <li>
-                      Identified inconsistencies in financial datasets and corrected reporting errors, improving internal report accuracy by approximately 45% for budgeting decisions.
+                      Developed robust data engineering pipelines to ingest and process real-time match statistics across 300+ games, implementing automated cleaning protocols for raw inputs.
                     </li>
                     <li>
-                      Built Excel-based tracking systems (pivot tables, formulas) to monitor expenses and surface anomalies, improving financial oversight efficiency by 60%.
+                      Engineered validation frameworks to detect anomalies and mitigate data poisoning risks from decentralized entry points, ensuring high-fidelity datasets for downstream reporting.
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="pt-[10px]">
+                  <p className="text-[#e5e2e1]">Tomorrow&apos;s Leaders Today - Dallas, TX</p>
+                  <p className="text-[rgba(192,199,212,0.76)]">
+                    Data Research Intern | May 2025 - Aug. 2025
+                  </p>
+                  <ul className="list-disc space-y-[4px] pl-[18px] pt-[4px] text-[rgba(192,199,212,0.92)]">
+                    <li>
+                      Spearheaded regional labor market and job search trend analysis, using Python (Pandas) to synthesize complex employment datasets into actionable reports.
+                    </li>
+                    <li>
+                      Designed automated tracking workflows using SQL queries and relational databases to map regional job availability, improving reporting efficiency by 60%.
                     </li>
                   </ul>
                 </div>
@@ -1237,11 +1259,11 @@ function ResumeWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMou
                 <div className="pt-[10px]">
                   <p className="text-[#e5e2e1]">Edikt Studios - Fort Worth, TX</p>
                   <p className="text-[rgba(192,199,212,0.76)]">
-                    Software Engineering Intern | Aug. 2023 - May 2024
+                    Software Engineering Intern (Optimization Team) | Aug. 2023 - May 2024
                   </p>
                   <ul className="list-disc space-y-[4px] pl-[18px] pt-[4px] text-[rgba(192,199,212,0.92)]">
                     <li>
-                      Developed gameplay systems in Unity using C#, applying OOP principles (inheritance, encapsulation, event-driven design) to improve system maintainability by approximately 15%.
+                      Developed a 3D fighting game designed for low-end PCs, reducing RAM and CPU usage by 30% through Unity Profiler analysis of excessive draw calls.
                     </li>
                     <li>
                       Refactored core systems to reduce code duplication and streamline feature development, improving iteration speed on gameplay mechanics by 50%.
@@ -1254,49 +1276,25 @@ function ResumeWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMou
                 <h3 className="text-[12px] uppercase tracking-[1.2px] text-[#a4c9ff]">Projects</h3>
 
                 <div className="pt-[6px]">
-                  <p className="text-[#e5e2e1]">GrubFinder | JavaScript, Node.js, REST APIs, Gemini API</p>
+                  <p className="text-[#e5e2e1]">EleSynth | Claude, Codex, Next.js, FastAPI, SciPy, Librosa, Gemini API</p>
                   <ul className="list-disc space-y-[4px] pl-[18px] pt-[4px] text-[rgba(192,199,212,0.92)]">
                     <li>
-                      Built a full-stack food discovery platform that delivers location-aware restaurant recommendations through Gemini-powered query understanding and ranking.
+                      Built a full-stack bioacoustics workbench to isolate elephant vocalizations from noisy field recordings using STFT and harmonic-percussive separation.
                     </li>
                     <li>
-                      Implemented backend filtering and scoring across 100+ restaurant attributes to return high-rated, criteria-matched results with faster and more relevant search outcomes.
+                      Designed a FastAPI backend with DSP pipelines (NumPy, SciPy, Librosa) to process WAV inputs into cleaned audio, spectrogram visualizations, and structured metadata outputs.
                     </li>
                   </ul>
                 </div>
 
                 <div className="pt-[10px]">
-                  <p className="text-[#e5e2e1]">Git Automation Tool | TypeScript, Electron, Node.js, GitHub API, Gemini API</p>
+                  <p className="text-[#e5e2e1]">Network Optimization Agent | Batch, PowerShell, WMI, iPerf, Test Agents, Codex</p>
                   <ul className="list-disc space-y-[4px] pl-[18px] pt-[4px] text-[rgba(192,199,212,0.92)]">
                     <li>
-                      Built an end-to-end repository onboarding workflow that validates GitHub URLs, clones repos, detects setup strategy (npm/yarn/pnpm/pip/poetry), runs install commands, and streams live logs in-app.
+                      Developed an automated diagnostic agent using Batch and PowerShell to scan local environments and safely evaluate system settings for latency reduction.
                     </li>
                     <li>
-                      Integrated GitHub metadata and Gemini-generated summaries/troubleshooting to produce actionable first-run guidance, reducing manual onboarding friction for unfamiliar codebases.
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="pt-[10px]">
-                  <p className="text-[#e5e2e1]">Klip | C++</p>
-                  <ul className="list-disc space-y-[4px] pl-[18px] pt-[4px] text-[rgba(192,199,212,0.92)]">
-                    <li>
-                      Designed a ring-buffer-based capture pipeline with deferred encoding to minimize redundant frame processing, reducing CPU/RAM/GPU overhead and improving performance on low-end systems.
-                    </li>
-                    <li>
-                      Engineered a zero-copy frame buffering architecture with selective encoding and parallel processing, achieving sub-50ms clip retrieval latency with near-zero impact on gameplay performance.
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="pt-[10px]">
-                  <p className="text-[#e5e2e1]">Exploit Incorporated | TypeScript, React, Figma</p>
-                  <ul className="list-disc space-y-[4px] pl-[18px] pt-[4px] text-[rgba(192,199,212,0.92)]">
-                    <li>
-                      Engineered scalable gameplay systems, including progression mechanics and income algorithms, to support dynamic loops and long-term player retention.
-                    </li>
-                    <li>
-                      Developed responsive React UI components from Figma specifications to improve usability, visual consistency, and cross-device experience.
+                      Engineered network test agents using WMI and iPerf to continuously monitor packet flow, validate configuration improvements, and support reliable real-time data transmission.
                     </li>
                   </ul>
                 </div>
@@ -1305,9 +1303,10 @@ function ResumeWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMou
               <section>
                 <h3 className="text-[12px] uppercase tracking-[1.2px] text-[#a4c9ff]">Technical Skills</h3>
                 <ul className="list-disc space-y-[4px] pl-[18px] pt-[6px] text-[rgba(192,199,212,0.92)]">
-                  <li>Languages: Python, C++, C#, C, Lua, HTML/CSS, JavaScript, Java, SQL</li>
-                  <li>Frameworks &amp; Libraries: React, Node.js, TypeScript, Tailwind CSS, Unity, PostgreSQL, Next.js</li>
-                  <li>Tools &amp; Platforms: Git, GitHub, Firebase, Figma, REST APIs, Pandas, NumPy, scikit-learn, Microsoft Excel</li>
+                  <li>Languages: Python, C++/C, TypeScript, Java, SQL, Batch</li>
+                  <li>Frameworks &amp; Platforms: .NET, Node.js, Next.js, React, FastAPI, Electron, Unity</li>
+                  <li>Libraries &amp; Systems: NumPy, Pandas, SciPy, Librosa, OpenCV, scikit-learn, FFmpeg</li>
+                  <li>Tools &amp; Infrastructure: Git, GitHub, Firebase, PostgreSQL, REST APIs, Linux</li>
                 </ul>
               </section>
             </div>

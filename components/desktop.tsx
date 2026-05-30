@@ -5,43 +5,13 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { desktopAssets } from "./design-assets";
 
-const aboutAppIcon = `data:image/svg+xml;utf8,${encodeURIComponent(
-  `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
-    <rect x='8' y='11' width='48' height='34' rx='4' fill='#5d6a74'/>
-    <rect x='11' y='14' width='42' height='28' rx='3' fill='url(#s)'/>
-    <rect x='26' y='47' width='12' height='6' rx='1.5' fill='#aab5be'/>
-    <rect x='20' y='53' width='24' height='3' rx='1.5' fill='#7f8a95'/>
-    <defs>
-      <linearGradient id='s' x1='11' y1='14' x2='53' y2='42' gradientUnits='userSpaceOnUse'>
-        <stop stop-color='#45d3e4'/>
-        <stop offset='1' stop-color='#237edb'/>
-      </linearGradient>
-    </defs>
-  </svg>`
-)}`;
+const aboutAppIcon = "/windows-profile.svg";
 
-const resumeFileIcon = "/resume-icon.png";
+const resumeFileIcon = "/adobe-acrobat.svg";
 
-const musicAppIcon = "/music.jpeg";
+const musicAppIcon = "/groove-music.svg";
 
-const projectsAppIcon = `data:image/svg+xml;utf8,${encodeURIComponent(
-  `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
-    <path d='M6 20a6 6 0 0 1 6-6h14l4 4h28v32a6 6 0 0 1-6 6H12a6 6 0 0 1-6-6z' fill='url(#f)'/>
-    <rect x='9' y='23' width='46' height='29' rx='4' fill='url(#b)'/>
-    <circle cx='41.5' cy='31' r='3.2' fill='#d7e2f2'/>
-    <path d='M11 48l12-12 8 8 8-9 14 13z' fill='#d7e2f2'/>
-    <defs>
-      <linearGradient id='f' x1='6' y1='14' x2='58' y2='56' gradientUnits='userSpaceOnUse'>
-        <stop stop-color='#0f71cf'/>
-        <stop offset='1' stop-color='#0a4f97'/>
-      </linearGradient>
-      <linearGradient id='b' x1='9' y1='23' x2='55' y2='52' gradientUnits='userSpaceOnUse'>
-        <stop stop-color='#2fa1e6'/>
-        <stop offset='1' stop-color='#1d78c6'/>
-      </linearGradient>
-    </defs>
-  </svg>`
-)}`;
+const projectsAppIcon = "/windows-file-explorer.png";
 
 const chromeAppIcon = "/chrome-icon.png";
 
@@ -49,14 +19,7 @@ const githubAppIcon = "/github.png";
 
 const mailAppIcon = "/mail.png";
 
-const acknowledgementAppIcon = `data:image/svg+xml;utf8,${encodeURIComponent(
-  `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
-    <rect x='6' y='6' width='52' height='52' rx='10' fill='#f3f6fb'/>
-    <path d='M20 31.5a4.5 4.5 0 0 1 4.5-4.5H30V18a4 4 0 0 1 8 0v9h4.5a4.5 4.5 0 0 1 4.5 4.5v11a4.5 4.5 0 0 1-4.5 4.5H30l-10 7v-7.5H24a4 4 0 0 1-4-4z' fill='#1f78c8'/>
-    <path d='M30 26.5h4v14h-4z' fill='#eaf3ff'/>
-    <path d='M24 31h16v4H24z' fill='#eaf3ff'/>
-  </svg>`
-)}`;
+const acknowledgementAppIcon = "/feedback-hub.svg";
 
 const aboutPhotoCandidates = [
   "/mewing.JPG",

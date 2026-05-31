@@ -513,17 +513,16 @@ function AcknowledgementWindow({
         </div>
       </div>
 
-      <div className="relative z-[1] flex h-[calc(100%-34px)] items-center justify-center bg-[linear-gradient(160deg,rgba(19,27,39,0.9)_0%,rgba(13,18,29,0.96)_100%)] p-[24px]">
-        <div className="flex w-full max-w-[560px] flex-col items-center rounded-[16px] border border-[rgba(164,201,255,0.18)] bg-[rgba(11,17,30,0.55)] px-[26px] py-[30px] text-center shadow-[0_16px_42px_rgba(0,0,0,0.28)]">
-          <p className="text-[11px] uppercase tracking-[2px] text-[#8fc9ee]">Acknowledgement</p>
-          <h2 className="pt-[10px] text-[30px] tracking-[-0.7px] text-[#e8edf5]">Like the project?</h2>
-          <p className="pt-[8px] text-[13px] text-[#b6bfcc]">
-            Click the button to acknowledge that you like the portfolio.
-          </p>
+      <div className="relative z-[1] grid h-[calc(100%-34px)] grid-cols-[210px_1fr] bg-[#f4f4f4] text-[#222]">
+        <aside className="border-r border-[#d4d4d4] bg-[#ededed] p-[16px] text-[13px] leading-[2.6] text-[#444]"><p className="text-[18px] font-semibold text-[#222]">Feedback Hub</p><p className="text-[#0067b8]">Home</p><p>Feedback</p><p>Quests</p><p>Achievements</p></aside>
+        <div className="overflow-auto p-[28px]">
+          <div className="mx-auto max-w-[520px]">
+          <h2 className="text-[28px] font-semibold text-[#222]">Send feedback</h2>
+          <p className="pt-[6px] text-[14px] text-[#555]">Let me know that you enjoyed the portfolio.</p>
 
           <button
             type="button"
-            className="mt-[24px] flex min-h-[108px] w-full items-center justify-center rounded-[14px] border border-[#5aa7dc] bg-[linear-gradient(180deg,#2f89d6_0%,#1f6fb8_100%)] px-[20px] py-[18px] text-[24px] font-semibold tracking-[-0.4px] text-white shadow-[0_18px_40px_rgba(31,111,184,0.32)] transition-transform hover:-translate-y-[1px] active:translate-y-[1px]"
+            className="mt-[22px] w-full border border-[#0067b8] bg-[#0078d4] px-[18px] py-[14px] text-left text-[16px] font-semibold text-white hover:bg-[#106ebe]"
             onClick={() => {
               setAckCount((value) => value + 1);
               setHasAcknowledged(true);
@@ -532,13 +531,14 @@ function AcknowledgementWindow({
             I like this project
           </button>
 
-          <div className="mt-[18px] flex w-full items-center justify-between rounded-[10px] border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.04)] px-[16px] py-[12px] text-[14px] text-[#e8edf5]">
-            <span>Clicks</span>
-            <span className="text-[18px] font-semibold text-[#9fd9ff]">{ackCount}</span>
+          <div className="mt-[18px] flex w-full items-center justify-between border border-[#d4d4d4] bg-white px-[16px] py-[12px] text-[14px]">
+            <span>Feedback submitted</span>
+            <span className="text-[18px] font-semibold text-[#0067b8]">{ackCount}</span>
           </div>
 
-          <div className="mt-[14px] min-h-[44px] w-full rounded-[10px] border border-[rgba(120,199,138,0.22)] bg-[rgba(18,72,38,0.28)] px-[16px] py-[12px] text-[14px] text-[#d6f2dd]">
+          <div className="mt-[14px] min-h-[44px] w-full border border-[#b7d7bd] bg-[#eaf5ec] px-[16px] py-[12px] text-[14px] text-[#22662d]">
             {hasAcknowledged ? "You like the project/portfolio." : "Click the button above to show your support."}
+          </div>
           </div>
         </div>
       </div>
@@ -586,12 +586,12 @@ function MailWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMouse
   };
 
   return (
-    <div className="relative h-[min(64vh,560px)] w-[min(920px,calc(125vw-80px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_30px_80px_rgba(0,0,0,0.55)]">
+    <div className="relative h-[min(64vh,560px)] w-[min(920px,calc(125vw-80px))] overflow-hidden border border-[#8a8a8a] bg-white shadow-[0_18px_48px_rgba(0,0,0,0.38)]">
       <div
-        className="relative z-[2] flex h-[30px] cursor-grab select-none items-center justify-between border-b border-[#3b414c] bg-[#2a2f36] px-[8px] active:cursor-grabbing"
+        className="relative z-[2] flex h-[30px] cursor-grab select-none items-center justify-between border-b border-[#c8c8c8] bg-white px-[8px] active:cursor-grabbing"
         onMouseDown={onTitleMouseDown}
       >
-        <div className="flex items-center gap-[6px] text-[11px] text-[#e8edf5]">
+        <div className="flex items-center gap-[6px] text-[11px] text-[#262626]">
           <img alt="" className="size-[13px] object-contain" src={mailAppIcon} />
           <span>New mail</span>
         </div>
@@ -599,21 +599,21 @@ function MailWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMouse
         <div className="flex items-center gap-[2px]">
           <button
             type="button"
-            className="flex h-[17px] w-[25px] items-center justify-center hover:bg-[#3a404a]"
+            className="flex h-[17px] w-[25px] items-center justify-center text-[#333] hover:bg-[#ededed]"
             aria-label="Minimize"
             onMouseDown={(event) => event.stopPropagation()}
             onClick={onMinimize}
           >
-            <span className="mb-[2px] text-[12px] leading-none text-[#dbe3ef]">-</span>
+            <span className="mb-[2px] text-[12px] leading-none">-</span>
           </button>
           <button
             type="button"
-            className="flex h-[17px] w-[25px] items-center justify-center hover:bg-[#3a404a]"
+            className="flex h-[17px] w-[25px] items-center justify-center text-[#333] hover:bg-[#ededed]"
             aria-label={isMaximized ? "Restore" : "Maximize"}
             onMouseDown={(event) => event.stopPropagation()}
             onClick={onMaximize}
           >
-            <span className="text-[11px] leading-none text-[#dbe3ef]">{isMaximized ? "❐" : "□"}</span>
+            <span className="text-[11px] leading-none">{isMaximized ? "❐" : "□"}</span>
           </button>
           <button
             type="button"
@@ -628,7 +628,7 @@ function MailWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMouse
       </div>
 
       <form className="h-[calc(100%-30px)]" onSubmit={handleSend}>
-        <div className="border-b border-[#343a45] bg-[#252a33] px-[10px] py-[6px]">
+        <div className="border-b border-[#dedede] bg-[#f6f6f6] px-[10px] py-[7px]">
           <div className="flex items-center gap-[8px]">
             <button
               type="submit"
@@ -638,47 +638,47 @@ function MailWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMouse
               <span className="text-[12px]">▶</span>
               {sending ? "Sending..." : "Send"}
             </button>
-            <span className="text-[12px] text-[#aeb7c5]">From:</span>
+            <span className="text-[12px] text-[#666]">From:</span>
             <input
               type="email"
               value={fromEmail}
               onChange={(event) => setFromEmail(event.target.value)}
               placeholder="your@email.com"
-              className="h-[24px] w-[280px] border border-[#4a5260] bg-[#1d2128] px-[8px] text-[12px] text-[#e8edf5] outline-none"
+              className="h-[24px] w-[280px] border border-[#c8c8c8] bg-white px-[8px] text-[12px] text-[#222] outline-none"
               required
             />
           </div>
         </div>
 
-        <div className="border-b border-[#343a45] bg-[#1f232a] text-[#e8edf5]">
-          <div className="flex items-center border-b border-[#343a45] px-[10px] py-[6px]">
-            <span className="w-[48px] text-[12px] text-[#aeb7c5]">To</span>
-            <span className="text-[12px] text-[#dbe3ef]">andrewdangbusiness@gmail.com</span>
-            <div className="ml-auto flex gap-[10px] text-[11px] text-[#8f9aac]">
+        <div className="border-b border-[#dedede] bg-white text-[#222]">
+          <div className="flex items-center border-b border-[#dedede] px-[10px] py-[7px]">
+            <span className="w-[48px] text-[12px] text-[#666]">To</span>
+            <span className="text-[12px] text-[#222]">andrewdangbusiness@gmail.com</span>
+            <div className="ml-auto flex gap-[10px] text-[11px] text-[#0078d4]">
               <span>Cc</span>
               <span>Bcc</span>
             </div>
           </div>
-          <div className="flex items-center border-b border-[#343a45] px-[10px] py-[6px]">
-            <label htmlFor="mail-subject" className="w-[78px] text-[12px] text-[#aeb7c5]">
+          <div className="flex items-center border-b border-[#dedede] px-[10px] py-[7px]">
+            <label htmlFor="mail-subject" className="w-[78px] text-[12px] text-[#666]">
               Add a subject
             </label>
             <input
               id="mail-subject"
               value={subject}
               onChange={(event) => setSubject(event.target.value)}
-              className="w-full bg-transparent px-[4px] py-[2px] text-[12px] text-[#e8edf5] outline-none"
+              className="w-full bg-transparent px-[4px] py-[2px] text-[12px] text-[#222] outline-none"
               required
             />
           </div>
         </div>
 
-        <div className="h-[calc(100%-140px)] bg-[#1f232a] p-[10px]">
+        <div className="h-[calc(100%-140px)] bg-white p-[10px]">
           <textarea
             value={message}
             onChange={(event) => setMessage(event.target.value)}
             placeholder="Write your message"
-            className="h-full w-full resize-none border border-[#4a5260] bg-[#1d2128] p-[8px] text-[13px] text-[#e8edf5] outline-none"
+            className="h-full w-full resize-none border border-[#d3d3d3] bg-white p-[8px] text-[13px] text-[#222] outline-none"
             required
           />
         </div>
@@ -732,15 +732,15 @@ function ProjectsWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleM
   ];
 
   return (
-    <div className="relative h-[min(74vh,700px)] w-[min(1120px,calc(125vw-80px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
+    <div className="relative h-[min(74vh,700px)] w-[min(1120px,calc(125vw-80px))] overflow-hidden border border-[#8a8a8a] bg-white shadow-[0_18px_48px_rgba(0,0,0,0.38)]">
 
       <div
-        className="relative z-[2] flex h-[34px] cursor-grab select-none items-center justify-between border-b border-[#3b414c] bg-[#2a2f36] px-[10px] active:cursor-grabbing"
+        className="relative z-[2] flex h-[30px] cursor-grab select-none items-center justify-between border-b border-[#c8c8c8] bg-white px-[8px] active:cursor-grabbing"
         onMouseDown={onTitleMouseDown}
       >
-        <div className="flex items-center gap-[8px] text-[11px] uppercase tracking-[0.5px] text-[#e8edf5]">
+        <div className="flex items-center gap-[7px] text-[11px] text-[#222]">
           <img alt="" className="size-[13px] object-contain" src={projectsAppIcon} />
-          Projects.app - Portfolio Showcase
+          Projects - File Explorer
         </div>
 
         <div className="flex h-full items-stretch">
@@ -774,15 +774,27 @@ function ProjectsWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleM
         </div>
       </div>
 
-      <div className="relative z-[1] h-[calc(100%-34px)] overflow-auto bg-[linear-gradient(132deg,rgba(30,35,50,0.5)_0%,rgba(20,24,35,0.3)_100%)] p-[28px]">
-        <div className="mx-auto grid max-w-[980px] gap-[18px]">
+      <div className="relative z-[1] h-[calc(100%-30px)] bg-white text-[#222]">
+        <div className="flex h-[34px] items-center gap-[14px] border-b border-[#dedede] bg-[#fafafa] px-[12px] text-[12px] text-[#444]">
+          <span className="text-[#1b78bf]">File</span><span>Home</span><span>Share</span><span>View</span>
+        </div>
+        <div className="flex h-[34px] items-center border-b border-[#dedede] px-[12px] text-[12px] text-[#555]">
+          This PC &gt; Portfolio &gt; Projects
+        </div>
+        <div className="grid h-[calc(100%-68px)] grid-cols-[170px_1fr]">
+          <div className="border-r border-[#dedede] bg-[#f7f7f7] px-[12px] py-[12px] text-[12px] leading-[2] text-[#444]">
+            <p className="font-semibold">Quick access</p>
+            <p>Desktop</p><p>Documents</p><p>Downloads</p><p className="font-semibold">This PC</p><p>Projects</p>
+          </div>
+          <div className="overflow-auto p-[18px]">
+        <div className="mx-auto grid max-w-[860px] gap-[14px]">
           {projects.map((project) => (
             <section
               key={project.name}
-              className="overflow-hidden rounded-[10px] border border-[rgba(164,201,255,0.22)] bg-[rgba(11,17,30,0.52)] shadow-[0_18px_40px_rgba(0,0,0,0.24)]"
+              className="overflow-hidden border border-[#d5d5d5] bg-white"
             >
-              <div className="grid min-h-[250px] grid-cols-[390px_1fr]">
-                <div className="relative border-r border-[rgba(164,201,255,0.16)] bg-[#0b111d]">
+              <div className="grid min-h-[250px] grid-cols-[48%_1fr]">
+                <div className="relative border-r border-[#dedede] bg-[#f4f4f4]">
                   <img
                     alt={`${project.name} project preview`}
                     className="h-full w-full object-cover"
@@ -793,7 +805,7 @@ function ProjectsWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleM
 
                 <div className="p-[18px]">
                   <div className="flex flex-wrap items-center justify-between gap-[10px]">
-                    <h3 className="text-[20px] text-[#e8edf5]">{project.name}</h3>
+                    <h3 className="text-[20px] text-[#222]">{project.name}</h3>
                     {project.repo ? (
                       <a
                         href={project.repo}
@@ -806,9 +818,9 @@ function ProjectsWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleM
                     ) : null}
                   </div>
 
-                  <p className="pt-[8px] text-[12px] uppercase tracking-[1px] text-[#9fc7e8]">{project.stack}</p>
+                  <p className="pt-[8px] text-[12px] text-[#3676a6]">{project.stack}</p>
 
-                  <ul className="list-disc space-y-[8px] pl-[18px] pt-[14px] text-[13px] leading-[1.58] text-[rgba(192,199,212,0.92)]">
+                  <ul className="list-disc space-y-[8px] pl-[18px] pt-[14px] text-[13px] leading-[1.58] text-[#555]">
                     {project.bullets.map((bullet) => (
                       <li key={bullet}>{bullet}</li>
                     ))}
@@ -817,6 +829,8 @@ function ProjectsWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleM
               </div>
             </section>
           ))}
+        </div>
+          </div>
         </div>
       </div>
     </div>
@@ -897,15 +911,15 @@ function MusicWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMous
   }, []);
 
   return (
-    <div className="relative h-[min(72vh,650px)] w-[min(960px,calc(125vw-80px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
+    <div className="relative h-[min(72vh,650px)] w-[min(960px,calc(125vw-80px))] overflow-hidden border border-[#161616] bg-[#121212] shadow-[0_18px_48px_rgba(0,0,0,0.48)]">
 
       <div
-        className="relative z-[2] flex h-[34px] cursor-grab select-none items-center justify-between border-b border-[#3b414c] bg-[#2a2f36] px-[10px] active:cursor-grabbing"
+        className="relative z-[2] flex h-[34px] cursor-grab select-none items-center justify-between border-b border-[#2a2a2a] bg-[#191919] px-[10px] active:cursor-grabbing"
         onMouseDown={onTitleMouseDown}
       >
-        <div className="flex items-center gap-[8px] text-[11px] uppercase tracking-[0.5px] text-[#e8edf5]">
+        <div className="flex items-center gap-[8px] text-[11px] text-white">
           <img alt="" className="size-[13px] object-contain" src={musicAppIcon} />
-          Music.app - Recommendations
+          Spotify
         </div>
 
         <div className="flex h-full items-stretch">
@@ -939,50 +953,42 @@ function MusicWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMous
         </div>
       </div>
 
-      <div className="relative z-[1] h-[calc(100%-34px)] p-[18px]">
-        <div className="flex h-full min-h-0 flex-col rounded-[8px] border border-[#414856] bg-[#262b34] p-[20px]">
-          <p className="text-[11px] uppercase tracking-[2px] text-[#8fc9ee]">Most Recommended Songs</p>
-          <h2 className="pt-[8px] text-[30px] tracking-[-0.7px] text-[#e8edf5]">My Top Picks For You</h2>
-          <p className="pt-[6px] text-[13px] text-[#b6bfcc]">Click any track to play it in Spotify.</p>
-
-          <div className="mt-[16px] overflow-hidden rounded-[8px] border border-[#3f4653] bg-[#1f232a] p-[10px]">
-            <div className="flex h-[152px] flex-col items-center justify-center gap-[10px] text-[13px] text-[#aeb7c5]">
-              <p>{isLoadingTracks ? "Loading songs..." : "Open the selected song in Spotify."}</p>
-              {!isLoadingTracks && selectedTrack ? (
-                <a
-                  href={getSpotifyOpenUrl(selectedTrack) || undefined}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-[4px] border border-[#4d9ad0] px-[12px] py-[7px] text-[12px] uppercase tracking-[0.6px] text-[#9fd9ff] hover:bg-[rgba(77,154,208,0.16)]"
-                >
-                  Open In Spotify
-                </a>
-              ) : null}
-            </div>
+      <div className="relative z-[1] grid h-[calc(100%-34px)] grid-cols-[190px_1fr] bg-[#121212]">
+        <aside className="border-r border-[#252525] bg-[#090909] p-[16px] text-[13px] text-[#b3b3b3]">
+          <div className="flex items-center gap-[8px] text-[20px] font-semibold text-white"><span className="text-[#1ed760]">●</span> Spotify</div>
+          <div className="mt-[26px] space-y-[14px]"><p className="text-white">⌂ Home</p><p>⌕ Search</p><p>▤ Your Library</p></div>
+          <div className="mt-[28px] space-y-[10px] border-t border-[#282828] pt-[16px] text-[12px]"><p>Liked Songs</p><p>Discover Weekly</p><p>Andrew&apos;s picks</p></div>
+        </aside>
+        <div className="flex min-h-0 flex-col">
+          <div className="bg-[linear-gradient(180deg,#263b2d_0%,#181818_100%)] px-[24px] pb-[18px] pt-[22px]">
+            <p className="text-[12px] font-semibold text-white">PLAYLIST</p>
+            <h2 className="pt-[4px] text-[36px] font-bold text-white">Andrew&apos;s top picks</h2>
+            <p className="pt-[4px] text-[13px] text-[#b3b3b3]">A few tracks I keep coming back to.</p>
+            {!isLoadingTracks && selectedTrack ? (
+              <a href={getSpotifyOpenUrl(selectedTrack) || undefined} target="_blank" rel="noreferrer" className="mt-[14px] inline-flex rounded-full bg-[#1ed760] px-[18px] py-[8px] text-[12px] font-semibold text-black hover:bg-[#2ee56f]">Play in Spotify</a>
+            ) : null}
           </div>
-
-          <div className="mt-[20px] min-h-0 flex-1 space-y-[8px] overflow-y-auto pr-[6px]">
+          <div className="min-h-0 flex-1 overflow-y-auto px-[20px] py-[12px]">
+            <div className="grid grid-cols-[34px_1fr_100px] border-b border-[#343434] px-[10px] pb-[8px] text-[11px] uppercase text-[#b3b3b3]"><span>#</span><span>Title</span><span>Duration</span></div>
             {tracks.map((song, index) => (
               <button
                 key={song.query}
                 type="button"
-                className={`flex w-full items-center justify-between rounded-[6px] border px-[14px] py-[11px] text-left transition-colors ${
+                className={`grid w-full grid-cols-[34px_1fr_100px] items-center px-[10px] py-[10px] text-left transition-colors ${
                   selectedTrack?.query === song.query
-                    ? "border-[#5aa7dc] bg-[rgba(38,87,122,0.35)]"
-                    : "border-[#3f4653] bg-[#1f232a] hover:bg-[#232831]"
+                    ? "bg-[#2a2a2a]"
+                    : "hover:bg-[#242424]"
                 }`}
                 onClick={() => setSelectedTrack(song)}
               >
-                <div className="flex min-w-0 items-center gap-[12px]">
-                  <span className="w-[16px] text-[12px] text-[#98a4b5]">
-                    {index + 2}
-                  </span>
+                <span className="text-[12px] text-[#b3b3b3]">{index + 1}</span>
+                <div className="min-w-0">
                   <div className="min-w-0">
-                    <p className="truncate text-[14px] text-[#e8edf5]">{song.title}</p>
-                    <p className="truncate text-[12px] text-[#aeb7c5]">{song.artist}</p>
+                    <p className="truncate text-[14px] text-white">{song.title}</p>
+                    <p className="truncate text-[12px] text-[#b3b3b3]">{song.artist}</p>
                   </div>
                 </div>
-                <span className="text-[12px] text-[#aeb7c5]">{formatDuration(song.durationMs)}</span>
+                <span className="text-[12px] text-[#b3b3b3]">{formatDuration(song.durationMs)}</span>
               </button>
             ))}
           </div>
@@ -1133,7 +1139,7 @@ type ResumeWindowProps = {
 
 function ResumeWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMouseDown }: ResumeWindowProps) {
   return (
-    <div className="relative h-[min(76vh,720px)] w-[min(1020px,calc(125vw-80px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
+    <div className="relative h-[min(76vh,720px)] w-[min(1020px,calc(125vw-80px))] overflow-hidden border border-[#8a8a8a] bg-[#e6e6e6] shadow-[0_18px_48px_rgba(0,0,0,0.38)]">
 
       <div
         className="relative z-[2] flex h-[34px] cursor-grab select-none items-center justify-between border-b border-[#3b414c] bg-[#2a2f36] px-[10px] active:cursor-grabbing"
@@ -1175,26 +1181,27 @@ function ResumeWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMou
         </div>
       </div>
 
-      <div className="relative z-[1] h-[calc(100%-34px)] p-[26px]">
-        <div className="h-full overflow-auto rounded-[6px] border border-[rgba(255,255,255,0.08)] bg-[rgba(9,12,19,0.68)] p-[28px]">
-          <div className="mx-auto max-w-[760px] text-[#c0c7d4]">
-            <p className="text-[11px] font-thin uppercase tracking-[2px] text-[#43d8f1]">Resume Preview</p>
-            <h2 className="pt-[10px] text-[40px] font-thin tracking-[-1.2px] text-[#e5e2e1]">
+      <div className="relative z-[1] h-[calc(100%-34px)]">
+        <div className="flex h-[40px] items-center gap-[18px] border-b border-[#ccc] bg-[#f7f7f7] px-[14px] text-[12px] text-[#444]"><span>☰</span><span>Resume.pdf</span><span className="ml-auto">−</span><span>100%</span><span>+</span><span>⤓</span><span>🖨</span></div>
+        <div className="h-[calc(100%-40px)] overflow-auto bg-[#d7d7d7] p-[26px]">
+          <div className="mx-auto max-w-[760px] bg-white p-[34px] text-[#333] shadow-[0_2px_8px_rgba(0,0,0,0.24)]">
+            <p className="text-[11px] uppercase tracking-[2px] text-[#b3261e]">Resume</p>
+            <h2 className="pt-[10px] text-[40px] font-thin tracking-[-1.2px] text-[#222]">
               Andrew Dang
             </h2>
-            <p className="pt-[6px] text-[14px] font-thin text-[rgba(192,199,212,0.8)]">
+            <p className="pt-[6px] text-[14px] font-thin text-[#666]">
               (682) 300-1386 | andrewdangbusiness@gmail.com | github.com/andrewdang06 | portfolio-psi-ten-qk0ppj3f0c.vercel.app
             </p>
             <a
               href="/andrew-dang-resume.pdf"
               target="_blank"
               rel="noreferrer"
-              className="mt-[14px] inline-flex border border-[#5aa7dc] px-[10px] py-[5px] text-[11px] uppercase tracking-[0.7px] text-[#9fd9ff] hover:bg-[rgba(90,167,220,0.16)]"
+              className="mt-[14px] inline-flex border border-[#b3261e] px-[10px] py-[5px] text-[11px] uppercase tracking-[0.7px] text-[#b3261e] hover:bg-[#f8eceb]"
             >
               Open PDF
             </a>
 
-            <div className="mt-[24px] space-y-[22px] text-[14px] font-thin leading-[1.65]">
+            <div className="mt-[24px] space-y-[22px] text-[14px] font-thin leading-[1.65] text-[#555] [&_h3]:!text-[#b3261e] [&_p]:!text-[#444] [&_li]:!text-[#555]">
               <section>
                 <h3 className="text-[12px] uppercase tracking-[1.2px] text-[#a4c9ff]">Education</h3>
                 <p className="pt-[6px] text-[#e5e2e1]">

@@ -470,6 +470,50 @@ function AcknowledgementWindow({
 }: AcknowledgementWindowProps) {
   const [ackCount, setAckCount] = useState(0);
   const [hasAcknowledged, setHasAcknowledged] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    setHasAcknowledged(window.localStorage.getItem("portfolio-acknowledged") === "true");
+
+    const loadAcknowledgements = async () => {
+      try {
+        const response = await fetch("/api/acknowledgements", { cache: "no-store" });
+        const payload = (await response.json()) as { count?: number };
+        setAckCount(payload.count ?? 0);
+      } catch {
+        // Keep the last visible count if the live store is temporarily unavailable.
+      }
+    };
+
+    void loadAcknowledgements();
+    const interval = window.setInterval(loadAcknowledgements, 5000);
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const submitAcknowledgement = async () => {
+    if (hasAcknowledged || isSubmitting) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/acknowledgements", { method: "POST" });
+      const payload = (await response.json()) as { count?: number };
+
+      if (!response.ok || typeof payload.count !== "number") {
+        return;
+      }
+
+      setAckCount(payload.count);
+      setHasAcknowledged(true);
+      window.localStorage.setItem("portfolio-acknowledged", "true");
+    } catch {
+      // The button stays available so a temporary network failure can be retried.
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="relative h-[min(58vh,520px)] w-[min(760px,calc(125vw-80px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
@@ -522,17 +566,15 @@ function AcknowledgementWindow({
 
           <button
             type="button"
-            className="mt-[22px] w-full border border-[#0067b8] bg-[#0078d4] px-[18px] py-[14px] text-left text-[16px] font-semibold text-white hover:bg-[#106ebe]"
-            onClick={() => {
-              setAckCount((value) => value + 1);
-              setHasAcknowledged(true);
-            }}
+            className="mt-[22px] w-full border border-[#0067b8] bg-[#0078d4] px-[18px] py-[14px] text-left text-[16px] font-semibold text-white hover:bg-[#106ebe] disabled:cursor-default disabled:border-[#7c9eb8] disabled:bg-[#7c9eb8]"
+            disabled={hasAcknowledged || isSubmitting}
+            onClick={submitAcknowledgement}
           >
-            I like this project
+            {hasAcknowledged ? "Thanks for the feedback" : isSubmitting ? "Submitting..." : "I like this project"}
           </button>
 
           <div className="mt-[18px] flex w-full items-center justify-between border border-[#d4d4d4] bg-white px-[16px] py-[12px] text-[14px]">
-            <span>Feedback submitted</span>
+            <span>Live acknowledgement count</span>
             <span className="text-[18px] font-semibold text-[#0067b8]">{ackCount}</span>
           </div>
 
@@ -722,11 +764,61 @@ function ProjectsWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleM
     {
       name: "Network Optimization Agent",
       stack: "Batch, PowerShell, WMI, iPerf, Test Agents, Codex",
-      repo: "",
+      repo: "https://github.com/andrewdang06/network-optimizations",
       image: "/project-network-optimization-agent.png",
       bullets: [
         "Developed an automated diagnostic agent using Batch and PowerShell to scan local environments and safely evaluate optimization settings for latency reduction.",
         "Engineered network test agents using WMI and iPerf to continuously monitor packet flow, validate configuration improvements, and support reliable real-time data transmission.",
+      ],
+    },
+    {
+      name: "StockPing",
+      stack: "Next.js, TypeScript, Clerk, Supabase, Stripe, Resend, PostHog, Sentry",
+      repo: "https://github.com/andrewdang06/stockping",
+      image: "https://opengraph.githubassets.com/portfolio-stockping/andrewdang06/stockping",
+      bullets: [
+        "Built a multi-tenant restaurant operations SaaS with location-level inventory, threshold alerts, recurring checklists, in-app notifications, and role-aware workflows.",
+        "Designed production-minded billing and infrastructure with Clerk organizations, Supabase row-level security, Stripe subscriptions, Resend email, analytics, and monitoring.",
+      ],
+    },
+    {
+      name: "AutoGit / RepoOptimizer",
+      stack: "Electron, React, TypeScript, Node.js, GitHub API, Gemini",
+      repo: "https://github.com/andrewdang06/AutoGit",
+      image: "https://opengraph.githubassets.com/portfolio-autogit/andrewdang06/AutoGit",
+      bullets: [
+        "Created an Electron onboarding tool that validates GitHub URLs, clones repositories, detects setup strategies, checks prerequisites, and streams live install logs.",
+        "Added GitHub metadata and Gemini-generated summaries, run guidance, and troubleshooting while keeping secrets isolated in the Electron main process.",
+      ],
+    },
+    {
+      name: "Klip",
+      stack: "C++, Windows Graphics Capture, WASAPI, FFmpeg, CMake, ImGui",
+      repo: "https://github.com/andrewdang06/klip",
+      image: "https://opengraph.githubassets.com/portfolio-klip/andrewdang06/klip",
+      bullets: [
+        "Engineered a Windows low-latency gameplay clipping app with rolling video and audio capture buffers plus global hotkeys for saving recent clips.",
+        "Separated capture, conversion, encoding, audio, and clip-save work into bounded queues with hardware encoder selection and frame dropping under backpressure.",
+      ],
+    },
+    {
+      name: "CourtVision",
+      stack: "Next.js, TypeScript, Python, Framer Motion, Recharts, Graph Modeling",
+      repo: "https://github.com/andrewdang06/nba-model",
+      image: "https://opengraph.githubassets.com/portfolio-courtvision/andrewdang06/nba-model",
+      bullets: [
+        "Built an NBA analytics dashboard for projected standings, matchup comparison, playoff bracket simulation, and model inspection.",
+        "Structured a modular Python modeling package for ingestion, graph scoring, feature engineering, and simulation behind a typed Next.js API surface.",
+      ],
+    },
+    {
+      name: "Obelisk",
+      stack: "Next.js, TypeScript, Prisma, PostgreSQL, Codex CLI",
+      repo: "https://github.com/andrewdang06/Obelisk",
+      image: "https://opengraph.githubassets.com/portfolio-obelisk/andrewdang06/Obelisk",
+      bullets: [
+        "Built a local-first Codex CLI control panel that records repository memory, plans coding tasks, captures logs and diffs, and runs verification.",
+        "Designed a review dashboard with evidence-based confidence scoring across command status, stderr, test results, changed files, and risky-file detection.",
       ],
     },
   ];

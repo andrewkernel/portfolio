@@ -40,8 +40,7 @@ export const desktopAssets = {
   iconRecycleBin:
     "https://www.figma.com/api/mcp/asset/7d5b7014-6356-4ec0-9f7c-18f51f964312",
   iconChrome: "/chrome-icon.png",
-  taskbarStart:
-    "https://www.figma.com/api/mcp/asset/82d3dbe0-cf04-4198-aeda-6586b72fa9f6",
+  taskbarStart: "/windows-start.svg",
   taskbarSearch:
     "https://www.figma.com/api/mcp/asset/b3796c61-d7dd-4bb7-b255-beed8e09c0f1",
   taskbarPinnedFolder: "/windows-file-explorer.png",

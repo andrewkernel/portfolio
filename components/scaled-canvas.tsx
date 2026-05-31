@@ -3,7 +3,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 
 const BASE_WIDTH = 1280;
-const BASE_HEIGHT = 768;
 const RENDER_WIDTH = 1920;
 const RENDER_HEIGHT = 1080;
 const INTERNAL_SCALE = RENDER_WIDTH / BASE_WIDTH;
@@ -50,4 +49,3 @@ export function ScaledCanvas({ children }: ScaledCanvasProps) {
     </div>
   );
 }
-

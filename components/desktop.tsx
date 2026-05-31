@@ -244,9 +244,9 @@ export function Desktop() {
           src="/windows background.jpeg"
           onLoad={() => setWallpaperLoaded(true)}
         />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,14,26,0.1)_0%,rgba(10,16,28,0.18)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[rgba(5,13,25,0.04)]" />
 
-        <div className="absolute left-[12px] top-[12px] bottom-[64px] z-[3] grid w-[74px] grid-cols-1 justify-items-center gap-[14px]">
+        <div className="absolute left-[6px] top-[7px] bottom-[56px] z-[3] grid w-[92px] grid-cols-1 justify-items-start gap-[4px]">
           <DesktopIcon
             active={windows.portfolio.open && !windows.portfolio.minimized}
             label="About Me"
@@ -472,7 +472,7 @@ function AcknowledgementWindow({
   const [hasAcknowledged, setHasAcknowledged] = useState(false);
 
   return (
-    <div className="relative h-[min(58vh,520px)] w-[min(760px,calc(100vw-240px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
+    <div className="relative h-[min(58vh,520px)] w-[min(760px,calc(125vw-80px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
       <div
         className="relative z-[2] flex h-[34px] cursor-grab select-none items-center justify-between border-b border-[#3b414c] bg-[#2a2f36] px-[10px] active:cursor-grabbing"
         onMouseDown={onTitleMouseDown}
@@ -586,7 +586,7 @@ function MailWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMouse
   };
 
   return (
-    <div className="relative h-[min(64vh,560px)] w-[min(920px,calc(100vw-260px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_30px_80px_rgba(0,0,0,0.55)]">
+    <div className="relative h-[min(64vh,560px)] w-[min(920px,calc(125vw-80px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_30px_80px_rgba(0,0,0,0.55)]">
       <div
         className="relative z-[2] flex h-[30px] cursor-grab select-none items-center justify-between border-b border-[#3b414c] bg-[#2a2f36] px-[8px] active:cursor-grabbing"
         onMouseDown={onTitleMouseDown}
@@ -732,7 +732,7 @@ function ProjectsWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleM
   ];
 
   return (
-    <div className="relative h-[min(74vh,700px)] w-[min(1120px,calc(100vw-240px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
+    <div className="relative h-[min(74vh,700px)] w-[min(1120px,calc(125vw-80px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
 
       <div
         className="relative z-[2] flex h-[34px] cursor-grab select-none items-center justify-between border-b border-[#3b414c] bg-[#2a2f36] px-[10px] active:cursor-grabbing"
@@ -897,7 +897,7 @@ function MusicWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMous
   }, []);
 
   return (
-    <div className="relative h-[min(72vh,650px)] w-[min(960px,calc(100vw-240px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
+    <div className="relative h-[min(72vh,650px)] w-[min(960px,calc(125vw-80px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
 
       <div
         className="relative z-[2] flex h-[34px] cursor-grab select-none items-center justify-between border-b border-[#3b414c] bg-[#2a2f36] px-[10px] active:cursor-grabbing"
@@ -1009,7 +1009,7 @@ function PortfolioWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitle
   };
 
   return (
-    <div className="relative h-[min(78vh,760px)] w-[min(1240px,calc(100vw-140px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
+    <div className="relative h-[min(78vh,760px)] w-[min(1240px,calc(125vw-80px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
 
       <div
         className="relative z-[2] flex h-[34px] cursor-grab select-none items-center justify-between border-b border-[#3b414c] bg-[#2a2f36] px-[10px] active:cursor-grabbing"
@@ -1080,7 +1080,7 @@ function PortfolioWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitle
           </div>
         </div>
 
-        <div className="relative flex flex-col justify-start bg-[linear-gradient(132deg,rgba(44,53,73,0.42)_0%,rgba(20,26,37,0.22)_100%)] p-[44px]">
+        <div className="relative flex flex-col justify-start overflow-auto bg-[linear-gradient(132deg,rgba(44,53,73,0.42)_0%,rgba(20,26,37,0.22)_100%)] p-[44px]">
           <div className="max-w-[780px]">
             <p className="text-[11px] font-thin uppercase tracking-[3px] text-[#43d8f1]">IDENT_PROFILE</p>
             <h1 className="pt-[12px] text-[64px] font-thin tracking-[-2.2px] text-[#e5e2e1] leading-[1]">
@@ -1133,7 +1133,7 @@ type ResumeWindowProps = {
 
 function ResumeWindow({ onClose, onMinimize, onMaximize, isMaximized, onTitleMouseDown }: ResumeWindowProps) {
   return (
-    <div className="relative h-[min(76vh,720px)] w-[min(1020px,calc(100vw-220px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
+    <div className="relative h-[min(76vh,720px)] w-[min(1020px,calc(125vw-80px))] overflow-hidden border border-[#434a56] bg-[#1f232a] shadow-[0_28px_72px_rgba(0,0,0,0.46)]">
 
       <div
         className="relative z-[2] flex h-[34px] cursor-grab select-none items-center justify-between border-b border-[#3b414c] bg-[#2a2f36] px-[10px] active:cursor-grabbing"
@@ -1328,16 +1328,16 @@ function DesktopIcon({ active = false, label, src, onClick }: DesktopIconProps) 
   return (
     <button
       type="button"
-      className="group flex flex-col items-center gap-[6px] bg-transparent p-0 text-center"
+      className={`group flex h-[92px] w-[84px] flex-col items-center justify-start gap-[4px] border border-transparent bg-transparent px-[3px] pt-[5px] text-center ${
+        active ? "border-[rgba(126,186,232,0.72)] bg-[rgba(0,90,158,0.42)]" : "hover:border-[rgba(126,186,232,0.52)] hover:bg-[rgba(0,90,158,0.28)]"
+      }`}
       onClick={onClick}
     >
-      <div className="flex size-[64px] items-center justify-center rounded-[8px] border border-transparent transition-all group-hover:border-[rgba(255,255,255,0.12)] group-hover:bg-[rgba(255,255,255,0.08)]">
-        <img alt="" className="size-[48px] object-contain" src={src} />
+      <div className="flex h-[52px] w-full items-center justify-center">
+        <img alt="" className="size-[44px] object-contain drop-shadow-[0_1px_1px_rgba(0,0,0,0.32)]" src={src} />
       </div>
       <span
-        className={`text-center text-[10px] font-thin leading-[1.2] transition-colors ${
-          active ? "text-[#ffffff]" : "text-[rgba(192,199,212,0.88)]"
-        }`}
+        className="w-full text-center text-[11px] font-normal leading-[1.12] text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.95)]"
       >
         {label}
       </span>
@@ -1386,18 +1386,19 @@ function DesktopTaskbar({
   onOpenGithub,
 }: DesktopTaskbarProps) {
   const taskbarPalette = {
-    shellBg: "rgba(24,33,47,0.94)",
-    shellBorder: "rgba(255,255,255,0.08)",
-    startBg: "#0078d7",
-    startHover: "#1683d9",
-    searchBg: "rgba(255,255,255,0.14)",
-    searchBorder: "rgba(255,255,255,0.08)",
-    searchFocusBg: "rgba(255,255,255,0.2)",
-    searchFocusBorder: "rgba(0,120,215,0.7)",
+    shellBg: "rgba(16,23,33,0.93)",
+    shellBorder: "rgba(255,255,255,0.05)",
+    startBg: "transparent",
+    startHover: "rgba(255,255,255,0.1)",
+    searchBg: "rgba(255,255,255,0.9)",
+    searchBorder: "rgba(0,0,0,0.16)",
+    searchFocusBg: "#ffffff",
+    searchFocusBorder: "rgba(0,120,215,0.9)",
   } as const;
 
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
+  const [startOpen, setStartOpen] = useState(false);
   const [now, setNow] = useState(() => new Date());
   const searchRef = useRef<HTMLDivElement | null>(null);
 
@@ -1419,10 +1420,10 @@ function DesktopTaskbar({
   ] as const;
 
   const taskbarAppButtonClass = (active: boolean) =>
-    `flex h-full w-[46px] items-center justify-center ${
+    `flex h-full w-[48px] items-center justify-center border-b-2 ${
       active
-        ? "border-b-2 border-[#76b9ed] bg-[rgba(255,255,255,0.13)]"
-        : "hover:bg-[rgba(255,255,255,0.08)]"
+        ? "border-[#76b9ed] bg-[rgba(255,255,255,0.13)]"
+        : "border-transparent hover:bg-[rgba(255,255,255,0.08)]"
     }`;
 
   const normalizedQuery = searchQuery.trim().toLowerCase();
@@ -1437,6 +1438,7 @@ function DesktopTaskbar({
       }
       if (!searchRef.current.contains(event.target as Node)) {
         setSearchOpen(false);
+        setStartOpen(false);
       }
     };
 
@@ -1490,11 +1492,15 @@ function DesktopTaskbar({
               event.currentTarget.style.backgroundColor = taskbarPalette.startBg;
             }}
             aria-label="Start"
+            onClick={() => {
+              setStartOpen((value) => !value);
+              setSearchOpen(false);
+            }}
           >
-            <img alt="" className="size-[14px] object-contain" src={desktopAssets.taskbarStart} />
+            <img alt="" className="size-[16px] object-contain" src={desktopAssets.taskbarStart} />
           </button>
           <div
-            className="ml-[1px] flex h-full w-[286px] items-center gap-[10px] border px-[12px]"
+            className="flex h-[40px] w-[292px] items-center gap-[10px] border px-[12px]"
             style={{
               borderColor: searchOpen ? taskbarPalette.searchFocusBorder : taskbarPalette.searchBorder,
               backgroundColor: searchOpen ? taskbarPalette.searchFocusBg : taskbarPalette.searchBg,
@@ -1503,7 +1509,10 @@ function DesktopTaskbar({
             <img alt="" className="size-[11px]" src={desktopAssets.taskbarSearch} />
             <input
               value={searchQuery}
-              onFocus={() => setSearchOpen(true)}
+              onFocus={() => {
+                setSearchOpen(true);
+                setStartOpen(false);
+              }}
               onChange={(event) => {
                 setSearchQuery(event.target.value);
                 setSearchOpen(true);
@@ -1518,13 +1527,71 @@ function DesktopTaskbar({
                 }
               }}
               placeholder="Type here to search"
-              className="w-full bg-transparent text-[12px] text-[#f3f6fb] outline-none placeholder:text-[rgba(229,235,242,0.78)]"
+              className="w-full bg-transparent text-[13px] text-[#1f1f1f] outline-none placeholder:text-[rgba(31,31,31,0.78)]"
               style={{
                 boxShadow: "none",
               }}
               aria-label="Search"
             />
           </div>
+
+          {startOpen ? (
+            <div className="absolute bottom-[48px] left-0 z-[40] flex h-[520px] w-[620px] border border-[rgba(0,0,0,0.48)] bg-[rgba(22,29,39,0.98)] shadow-[4px_-4px_18px_rgba(0,0,0,0.28)]">
+              <div className="flex w-[52px] flex-col justify-between bg-[rgba(10,15,22,0.58)] py-[10px]">
+                <div className="space-y-[4px]">
+                  <div className="flex h-[44px] items-center justify-center">
+                    <img alt="" className="size-[24px] object-contain" src={aboutAppIcon} />
+                  </div>
+                </div>
+                <div className="space-y-[2px] text-[18px] text-white">
+                  <button type="button" className="flex h-[44px] w-full items-center justify-center hover:bg-[rgba(255,255,255,0.1)]" aria-label="Settings">
+                    ⚙
+                  </button>
+                  <button type="button" className="flex h-[44px] w-full items-center justify-center hover:bg-[rgba(255,255,255,0.1)]" aria-label="Power">
+                    ⏻
+                  </button>
+                </div>
+              </div>
+
+              <div className="w-[258px] overflow-auto px-[10px] py-[12px] text-white">
+                <p className="pb-[8px] text-[12px] text-[rgba(255,255,255,0.74)]">Recently added</p>
+                {quickApps.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className="flex h-[42px] w-full items-center gap-[10px] px-[6px] text-left text-[13px] hover:bg-[rgba(255,255,255,0.1)]"
+                    onClick={() => {
+                      item.action();
+                      setStartOpen(false);
+                    }}
+                  >
+                    <img alt="" className="size-[22px] object-contain" src={item.icon} />
+                    <span>{item.label}</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="flex-1 px-[8px] py-[12px] text-white">
+                <p className="pb-[8px] text-[12px] text-[rgba(255,255,255,0.74)]">Life at a glance</p>
+                <div className="grid grid-cols-2 gap-[4px]">
+                  {quickApps.slice(0, 6).map((item) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      className="flex aspect-square flex-col items-start justify-between bg-[#1f78b8] p-[10px] text-left hover:bg-[#2586c7]"
+                      onClick={() => {
+                        item.action();
+                        setStartOpen(false);
+                      }}
+                    >
+                      <img alt="" className="size-[32px] object-contain" src={item.icon} />
+                      <span className="text-[12px]">{item.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : null}
 
           {searchOpen ? (
             <div className="absolute bottom-[48px] left-[49px] z-[40] h-[420px] w-[600px] border border-[rgba(145,145,145,0.6)] bg-[#f4f4f4] shadow-[0_18px_56px_rgba(0,0,0,0.45)]">
@@ -1595,14 +1662,14 @@ function DesktopTaskbar({
           ) : null}
         </div>
 
-        <div className="absolute left-1/2 top-0 z-[1] flex h-full -translate-x-1/2 items-center gap-[1px]">
+        <div className="absolute left-[340px] top-0 z-[1] flex h-full items-center gap-[1px]">
           <button
             type="button"
             className={taskbarAppButtonClass(windows.portfolio.open && !windows.portfolio.minimized)}
             aria-label="Open about me"
             onClick={onOpenPortfolio}
           >
-            <img alt="" className="size-[17px] object-contain" src={aboutAppIcon} />
+            <img alt="" className="size-[20px] object-contain" src={aboutAppIcon} />
           </button>
           <button
             type="button"
@@ -1610,7 +1677,7 @@ function DesktopTaskbar({
             aria-label="Open resume viewer"
             onClick={onOpenResume}
           >
-            <img alt="" className="size-[17px] object-contain" src={resumeFileIcon} />
+            <img alt="" className="size-[20px] object-contain" src={resumeFileIcon} />
           </button>
           <button
             type="button"
@@ -1618,7 +1685,7 @@ function DesktopTaskbar({
             aria-label="Open music app"
             onClick={onOpenMusic}
           >
-            <img alt="" className="size-[17px] object-contain" src={musicAppIcon} />
+            <img alt="" className="size-[20px] object-contain" src={musicAppIcon} />
           </button>
           <button
             type="button"
@@ -1626,7 +1693,7 @@ function DesktopTaskbar({
             aria-label="Open projects app"
             onClick={onOpenProjects}
           >
-            <img alt="" className="size-[17px] object-contain" src={projectsAppIcon} />
+            <img alt="" className="size-[20px] object-contain" src={projectsAppIcon} />
           </button>
           <button
             type="button"
@@ -1634,7 +1701,7 @@ function DesktopTaskbar({
             aria-label="Chrome"
             onClick={onOpenChrome}
           >
-            <img alt="" className="size-[17px] object-contain" src={chromeAppIcon} />
+            <img alt="" className="size-[20px] object-contain" src={chromeAppIcon} />
           </button>
           <button
             type="button"
@@ -1642,7 +1709,7 @@ function DesktopTaskbar({
             aria-label="GitHub"
             onClick={onOpenGithub}
           >
-            <img alt="" className="size-[17px] object-contain" src={githubAppIcon} />
+            <img alt="" className="size-[20px] object-contain" src={githubAppIcon} />
           </button>
           <button
             type="button"
@@ -1650,7 +1717,7 @@ function DesktopTaskbar({
             aria-label="Mail"
             onClick={onOpenMail}
           >
-            <img alt="" className="size-[17px] object-contain" src={mailAppIcon} />
+            <img alt="" className="size-[20px] object-contain" src={mailAppIcon} />
           </button>
           <button
             type="button"
@@ -1658,11 +1725,11 @@ function DesktopTaskbar({
             aria-label="Acknowledgement"
             onClick={onOpenAcknowledgement}
           >
-            <img alt="" className="size-[17px] object-contain" src={acknowledgementAppIcon} />
+            <img alt="" className="size-[20px] object-contain" src={acknowledgementAppIcon} />
           </button>
         </div>
 
-        <div className="absolute right-[8px] top-0 flex h-full items-center gap-[12px] text-[11px] text-[#d8dee7]">
+        <div className="absolute right-[8px] top-0 flex h-full items-center gap-[12px] text-[11px] text-[#f1f1f1]">
           <img alt="" className="h-[10px] w-[14px]" src={desktopAssets.taskbarWifi} />
           <img alt="" className="h-[10px] w-[10px]" src={desktopAssets.taskbarVolume} />
           <div className="text-right leading-[14px]">

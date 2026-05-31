@@ -1516,6 +1516,7 @@ function DesktopTaskbar({
               onChange={(event) => {
                 setSearchQuery(event.target.value);
                 setSearchOpen(true);
+                setStartOpen(false);
               }}
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
@@ -1535,7 +1536,7 @@ function DesktopTaskbar({
             />
           </div>
 
-          {startOpen ? (
+          {startOpen && !searchOpen ? (
             <div className="absolute bottom-[48px] left-0 z-[40] flex h-[520px] w-[620px] border border-[rgba(0,0,0,0.48)] bg-[rgba(22,29,39,0.98)] shadow-[4px_-4px_18px_rgba(0,0,0,0.28)]">
               <div className="flex w-[52px] flex-col justify-between bg-[rgba(10,15,22,0.58)] py-[10px]">
                 <div className="space-y-[4px]">
